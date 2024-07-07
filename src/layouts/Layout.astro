@@ -3,10 +3,10 @@ import '../styles.css';
 
 interface Props {
 	title: string;
-  bgColor: string;
+  bg: string;
 }
 
-const { title, bgColor } = Astro.props;
+const { title, bg } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,16 +19,10 @@ const { title, bgColor } = Astro.props;
 		<!-- <meta name="generator" content={Astro.generator} /> -->
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class={bg}>
 		<slot />
 	</body>
   <!-- <footer class="text-center">
     <p>Built with <a href="https://astro.build">{Astro.generator}</a></p>
   </footer> -->
 </html>
-
-<style define:vars={{ bgColor }}>
-  * {
-    background-color: var(--bgColor);
-  }
-</style>

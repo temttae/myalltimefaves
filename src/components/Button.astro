@@ -1,5 +1,17 @@
 ---
-const { href, size, color, bgColor } = Astro.props;
+const { href, size, color, hoverColor } = Astro.props;
+
+function setColor(c: string) {
+  if (c.substring(0, 1) == '#') return c;
+  if (c == 'white') return '#FFFFFF';
+  if (c == 'black') return '#252525';
+  if (c == 'grey-light') return '#E8E7E6';
+  if (c == 'grey-dark') return '#D9D9D9';
+  return '#252525';
+}
+
+const c = setColor(color);
+const hc = setColor(hoverColor);
 ---
 
 <a href={href}>
@@ -8,18 +20,21 @@ const { href, size, color, bgColor } = Astro.props;
   </div>
 </a>
 
-<style define:vars={{ color, bgColor }}>
+<style define:vars={{ c, hc }}>
   .btn {
     font-weight: 700;
-    border: solid 2px var(--color);
-    color: var(--color);
+    border: solid 2px var(--c);
+    border: solid 2px;
+    color: var(--c);
     background-color: transparent;
     width: fit-content;
+    text-align: center;
   }
   .btn:hover {
-    color: var(--color);
-    border: solid 2px var(--bgColor);
-    background-color: var(--bgColor);
+    color: var(--hc);
+    border: solid 2px var(--c);
+    background-color: var(--c);
+    transition: .3s;
   }
 
   .md {

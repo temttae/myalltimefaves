@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
 const username = import.meta.env.USERNAME;
+
+const filmCollection = await getCollection('film');
 ---
 
-<Layout title="👀: myalltimefaves" bgColor="#252525">
+<Layout title="👀: myalltimefaves" bg="bg-black">
   <header class="px-10 py-6 flex items-end text-white">
-    <div class="flex-1" />
+    <div class="flex-none md:flex-1" />
     <div>
       <h4 class="font-bold">myalltimefaves</h4>
     </div>
@@ -16,11 +19,21 @@ const username = import.meta.env.USERNAME;
   </header>
 
   <main class="text-white">
+    {filmCollection.map(film => {
+      return (
+        <a href={`/film/${film.id}`}>
+          <p>{film.data[0].title} ({film.data[0].year})</p>
+        </a>
+      )
+    })}
+  </main>
+
+  <!-- <main class="text-white">
     <h1>Header 1</h1>
     <h2>Header 2</h2>
     <h3>Header 3</h3>
     <h4>Header 4</h4>
     <h5>Header 5</h5>
     <p>Body</p>
-  </main>
+  </main> -->
 </Layout>
