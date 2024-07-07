@@ -1,9 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
 ---
 
 <Layout title="👀: myalltimefaves" bgColor="#252525">
   <div class="text-center p-4">
     <p class="text-white">this is where the main content goes!</p>
+  </div>
+  <div>
+    <Button href="/md" size="md" color="black" bgColor="white">md</Button>
+    <Button href="/lg" size="lg" color="white" bgColor="#E0A800">lg</Button>
   </div>
 </Layout>

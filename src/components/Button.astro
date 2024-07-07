@@ -1,0 +1,32 @@
+---
+const { href, size, color, bgColor } = Astro.props;
+---
+
+<a href={href}>
+  <div class:list={["btn", size]}>
+    <slot />
+  </div>
+</a>
+
+<style define:vars={{ color, bgColor }}>
+  .btn {
+    font-weight: 700;
+    border: solid 2px var(--color);
+    color: var(--color);
+    background-color: transparent;
+    width: fit-content;
+  }
+  .btn:hover {
+    color: var(--color);
+    border: solid 2px var(--bgColor);
+    background-color: var(--bgColor);
+  }
+
+  .md {
+    padding: 0.5rem 1rem;
+  }
+
+  .lg {
+    padding: 3.5rem 5rem;
+  }
+</style>
