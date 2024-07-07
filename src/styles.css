@@ -9,6 +9,7 @@
   html {
     @apply font-inter;
     @apply text-base;
+    scrollbar-color: transparent;
   }
 
   h1 {
