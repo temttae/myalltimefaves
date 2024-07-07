@@ -2,10 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import Button from "../../components/Button.astro";
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  film: CollectionEntry<'film'>;
+}
 
 export async function getStaticPaths() {
   const films = await getCollection('film');
-  return films.map(film => ({
+  return films.map((film: CollectionEntry<'film'>) => ({
     params: { slug: film.id },
     props: { film: film.data[0] },
   }));
