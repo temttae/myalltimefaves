@@ -16,6 +16,14 @@ export default {
       inter: ['Inter', 'sans-serif'], // body
       rufina: ['Rufina', 'serif'], // header
     },
+    fontSize: {
+      base: '1rem', // 16px
+      xl: '1.25rem', // 20px
+      '2xl': '2rem', // 32px
+      '3xl': '3rem', // 48px
+      '4xl': '4rem', // 64px
+      '5xl': '6rem', // 96px
+    },
 		extend: {},
 	},
 	plugins: [],

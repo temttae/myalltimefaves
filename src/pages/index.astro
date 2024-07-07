@@ -1,14 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
+
+const username = import.meta.env.USERNAME;
 ---
 
 <Layout title="👀: myalltimefaves" bgColor="#252525">
-  <div class="text-center p-4">
-    <p class="text-white">this is where the main content goes!</p>
-  </div>
-  <div>
-    <Button href="/md" size="md" color="black" bgColor="white">md</Button>
-    <Button href="/lg" size="lg" color="white" bgColor="#E0A800">lg</Button>
-  </div>
+  <header class="px-10 py-6 flex items-end text-white">
+    <div class="flex-1" />
+    <div>
+      <h4 class="font-bold">myalltimefaves</h4>
+    </div>
+    <div class="flex-1 text-right">
+      <p>find me @ <a href=`https://letterboxd.com/${username}` class="underline">letterboxd</a></p>
+    </div>
+  </header>
+
+  <main class="text-white">
+    <h1>Header 1</h1>
+    <h2>Header 2</h2>
+    <h3>Header 3</h3>
+    <h4>Header 4</h4>
+    <h5>Header 5</h5>
+    <p>Body</p>
+  </main>
 </Layout>

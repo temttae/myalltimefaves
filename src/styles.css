@@ -8,8 +8,31 @@
 @layer base {
   html {
     @apply font-inter;
+    @apply text-base;
   }
+
   h1 {
+    @apply text-2xl;
     @apply font-rufina;
+  }
+  h2 {
+    @apply text-4xl;
+    @apply font-rufina;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-3xl;
+    @apply font-rufina;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-5xl;
+    @apply font-rufina;
+  }
+
+  a:hover {
+    @apply text-grey-dark;
   }
 }
