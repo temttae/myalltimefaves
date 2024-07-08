@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const { activeTab } = Astro.props;
+
+const filmCollection = await getCollection('film', ({ data }) => {
+  const minYear = parseInt(activeTab.substring(0, 4));
+  const maxYear = minYear + 10;
+  return data[0].year >= minYear && data[0].year < maxYear;
+});
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*/*.{jpeg,jpg,png,gif}');
+---
+
+{filmCollection.length == 0 ? (
+  <p class="text-center italic">No films from this decade yet!</p>
+) : (
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    {filmCollection.map(film => {
+      return (
+        <a href={`/film/${film.data[0].slug}`}>
+          <div class="flex flex-col gap-4 text-center">
+            <Image src={images[film.data[0].posterpath]()} alt="film-poster" />
+            <p>{film.data[0].title} ({film.data[0].year})</p>
+          </div>
+        </a>
+      )
+    })}
+  </div>
+)}

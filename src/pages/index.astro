@@ -1,10 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import FilmDisplay from '../components/FilmDisplay.astro';
 
 const username = import.meta.env.USERNAME;
-
-const filmCollection = await getCollection('film');
 ---
 
 <Layout title="👀: myalltimefaves" bg="bg-black">
@@ -18,17 +16,7 @@ const filmCollection = await getCollection('film');
     </div>
   </header>
 
-  <main class="text-white">
-    
+  <main class="mt-8 px-10">
+    <FilmDisplay />
   </main>
-
-  <!-- <main class="text-white">
-    {filmCollection.map(film => {
-      return (
-        <a href={`/film/${film.id}`}>
-          <p>{film.data[0].title} ({film.data[0].year})</p>
-        </a>
-      )
-    })}
-  </main> -->
 </Layout>
