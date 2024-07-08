@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FilmDisplay from '../components/FilmDisplay';
+import Carousel from '../components/Carousel.astro';
 
 const username = import.meta.env.USERNAME;
 ---
@@ -17,6 +18,8 @@ const username = import.meta.env.USERNAME;
   </header>
 
   <main class="mt-8 px-10">
-    <FilmDisplay client:load />
+    <FilmDisplay client:load>
+      <Carousel slot="carousel" />
+    </FilmDisplay>
   </main>
 </Layout>

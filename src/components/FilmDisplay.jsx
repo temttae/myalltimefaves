@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import { getCollection } from "astro:content";
 
 import aftersun from '../assets/posters/aftersun2022.jpg';
@@ -60,14 +60,14 @@ const FilmGallery = (props) => {
   )
 }
 
-export default function FilmDisplay() {
+export default function FilmDisplay(props) {
   const [activeTab, setActiveTab] = useState('All');
   const [films, setFilms] = useState([]);
 
   const filterFilms = async (tab) => {
     var filmCollection;
     if (tab == 'All') {
-      filmCollection = await getCollection('film');
+      filmCollection = [];
     } else {
       const minYear = parseInt(tab.substring(0, 4));
       const maxYear = minYear + 10;
@@ -86,7 +86,11 @@ export default function FilmDisplay() {
   return (
     <div className="text-white">
       <FilterTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <FilmGallery films={films} />
+      {activeTab == 'All' ? (
+        <>{props.carousel}</>
+      ) : (
+        <FilmGallery films={films} />
+      )}
     </div>
   )
 }
