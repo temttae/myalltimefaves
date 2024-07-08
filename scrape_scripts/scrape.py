@@ -68,7 +68,7 @@ def scrape_film(link):
   # save poster image
   # image_url = soup.find('img', class_='image')['src']
   # img = Image.open(requests.get(image_url, stream=True).raw)
-  # img.save(f'./src/content/media/posters/{cleantitle}{year}.jpg', 'jpeg')
+  # img.save(f'./src/assets/posters/{cleantitle}{year}.jpg', 'jpeg')
   
   data = {
     # id
@@ -87,11 +87,11 @@ def scrape_film(link):
     'rating': rating,
 
     # media
-    'posterpath': f'/src/content/media/posters/{cleantitle}{year}.jpg',
+    'posterpath': f'/src/assets/posters/{cleantitle}{year}.jpg',
     'stillpaths': [
-      f'/src/content/media/stills/{cleantitle}01.jpg',
-      f'/src/content/media/stills/{cleantitle}02.jpg',
-      f'/src/content/media/stills/{cleantitle}03.jpg',
+      f'/src/assets/stills/{cleantitle}01.jpg',
+      f'/src/assets/stills/{cleantitle}02.jpg',
+      f'/src/assets/stills/{cleantitle}03.jpg',
     ],
 
     # manual entry
@@ -107,12 +107,8 @@ def scrape_film(link):
 
 # scrape data from films
 links = [
-  'the-godfather',
-  'home-alone',
   'good-will-hunting',
-  'notting-hill',
-  'die-hard',
-  'john-wick',
+  'aftersun'
 ]
 
 # one json file per film

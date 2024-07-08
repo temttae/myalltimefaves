@@ -1,35 +1,35 @@
 [
-    {
-        "slug":"good-will-hunting",
-        "title":"Good Will Hunting",
-        "year":1997,
-        "directorlist":[
-            "Gus Van Sant"
-        ],
-        "runtime":127,
-        "genrelist":[
-            "Drama"
-        ],
-        "castlist":{
-            "Matt Damon":"Will Hunting",
-            "Robin Williams":"Sean Maguire",
-            "Ben Affleck":"Chuckie Sullivan",
-            "Stellan Skarsg\u00e5rd":"Gerald Lambeau",
-            "Minnie Driver":"Skylar"
-        },
-        "tagline":"Some people can never believe in themselves, until someone believes in them.",
-        "summary":"Will Hunting has a genius-level IQ but chooses to work as a janitor at MIT. When he solves a difficult graduate-level math problem, his talents are discovered by Professor Gerald Lambeau, who decides to help the misguided youth reach his potential. When Will is arrested for attacking a police officer, Professor Lambeau makes a deal to get leniency for him if he will get treatment from therapist Sean Maguire.",
-        "ratingstars":"\u2605\u2605\u2605\u2605\u2605",
-        "rating":5,
-        "posterpath":"\/src\/content\/media\/posters\/goodwillhunting1997.jpg",
-        "stillpaths":[
-            "\/src\/content\/media\/stills\/goodwillhunting01.jpg",
-            "\/src\/content\/media\/stills\/goodwillhunting02.jpg",
-            "\/src\/content\/media\/stills\/goodwillhunting03.jpg"
-        ],
-        "caption":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "analysis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus mauris ultrices eros in cursus turpis massa. In nulla posuere sollicitudin aliquam ultrices. Faucibus purus in massa tempor. Id leo in vitae turpis massa sed. Posuere lorem ipsum dolor sit. Neque gravida in fermentum et sollicitudin ac orci. Ut eu sem integer vitae justo. Ligula ullamcorper malesuada proin libero nunc consequat interdum. Amet massa vitae tortor condimentum. Erat nam at lectus urna. Blandit libero volutpat sed cras ornare. Adipiscing elit ut aliquam purus sit. Sit amet tellus cras adipiscing enim.",
-        "quote":"Look, you're my best friend, so don't take this the wrong way but, in 20 years if you're still livin' here, comin' over to my house, watchin' the Patriots games, workin' construction, I'll fuckin' kill ya. That's not a threat, that's a fact, I'll fuckin' kill ya.",
-        "color":"#E0A800"
-    }
+  {
+      "slug":"good-will-hunting",
+      "title":"Good Will Hunting",
+      "year":1997,
+      "directorlist":[
+          "Gus Van Sant"
+      ],
+      "runtime":127,
+      "genrelist":[
+          "Drama"
+      ],
+      "castlist":{
+          "Matt Damon":"Will Hunting",
+          "Robin Williams":"Sean Maguire",
+          "Ben Affleck":"Chuckie Sullivan",
+          "Stellan Skarsg\u00e5rd":"Gerald Lambeau",
+          "Minnie Driver":"Skylar"
+      },
+      "tagline":"Some people can never believe in themselves, until someone believes in them.",
+      "summary":"Will Hunting has a genius-level IQ but chooses to work as a janitor at MIT. When he solves a difficult graduate-level math problem, his talents are discovered by Professor Gerald Lambeau, who decides to help the misguided youth reach his potential. When Will is arrested for attacking a police officer, Professor Lambeau makes a deal to get leniency for him if he will get treatment from therapist Sean Maguire.",
+      "ratingstars":"\u2605\u2605\u2605\u2605\u2605",
+      "rating":5,
+      "posterpath":"\/src\/assets\/posters\/goodwillhunting1997.jpg",
+      "stillpaths":[
+          "\/src\/assets\/stills\/goodwillhunting01.jpg",
+          "\/src\/assets\/stills\/goodwillhunting02.jpg",
+          "\/src\/assets\/stills\/goodwillhunting03.jpg"
+      ],
+      "caption":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "analysis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus mauris ultrices eros in cursus turpis massa. In nulla posuere sollicitudin aliquam ultrices. Faucibus purus in massa tempor. Id leo in vitae turpis massa sed. Posuere lorem ipsum dolor sit. Neque gravida in fermentum et sollicitudin ac orci. Ut eu sem integer vitae justo. Ligula ullamcorper malesuada proin libero nunc consequat interdum. Amet massa vitae tortor condimentum. Erat nam at lectus urna. Blandit libero volutpat sed cras ornare. Adipiscing elit ut aliquam purus sit. Sit amet tellus cras adipiscing enim.",
+      "quote":"Look, you're my best friend, so don't take this the wrong way but, in 20 years if you're still livin' here, comin' over to my house, watchin' the Patriots games, workin' construction, I'll fuckin' kill ya. That's not a threat, that's a fact, I'll fuckin' kill ya.",
+      "color":"#E0A800"
+  }
 ]

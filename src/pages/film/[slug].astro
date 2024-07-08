@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Button from "../../components/Button.astro";
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 
 interface Props {
   film: CollectionEntry<'film'>;
@@ -12,27 +13,28 @@ export async function getStaticPaths() {
   const films = await getCollection('film');
   return films.map((film: CollectionEntry<'film'>) => ({
     params: { slug: film.id },
-    props: { film: film.data[0] },
+    props: { film: film },
   }));
 }
 const { film } = Astro.props;
-const highlightText = 'text-['+film.color+']';
-const highlightBg = 'bg-['+film.color+']';
+const color = film.data[0].color;
 
 const chunkSize = 3;
 var directorPortions: string[][] = [];
-for (let i = 0; i < film.directorlist.length; i += chunkSize) {
-  var directorChunk = film.directorlist.slice(i, i + chunkSize);
+for (let i = 0; i < film.data[0].directorlist.length; i += chunkSize) {
+  var directorChunk = film.data[0].directorlist.slice(i, i + chunkSize);
   directorPortions.push(directorChunk);
 }
 var castPortions: any[][] = [];
-for (let i = 0; i < Object.keys(film.castlist).length; i+= chunkSize) {
-  var castChunk = Object.entries(film.castlist).slice(i, i + chunkSize);
+for (let i = 0; i < Object.keys(film.data[0].castlist).length; i+= chunkSize) {
+  var castChunk = Object.entries(film.data[0].castlist).slice(i, i + chunkSize);
   castPortions.push(castChunk);
 }
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*/*.{jpeg,jpg,png,gif}');
 ---
 
-<Layout title={film.title} bg="bg-grey-light">
+<Layout title={film.data[0].title} bg="bg-grey-light">
   <main class="h-screen overflow-y-scroll snap-y snap-mandatory">
     <div class="snap-start px-10 py-6 mb-8">
       <Button href="/" size="md" color="black" hoverColor="grey-light">BACK TO MOVIE LIST</Button>
@@ -42,13 +44,13 @@ for (let i = 0; i < Object.keys(film.castlist).length; i+= chunkSize) {
                     flex flex-col gap-4
                     md:grid md:grid-cols-2 md:gap-6">
       <div class="flex flex-col gap-4">
-        <h2>{film.title}</h2>
-        <h4>{film.year} / {film.genrelist.join(", ")} / {Math.floor(film.runtime / 60)}H {film.runtime % 60}M</h4>
+        <h2>{film.data[0].title}</h2>
+        <h4>{film.data[0].year} / {film.data[0].genrelist.join(", ")} / {Math.floor(film.data[0].runtime / 60)}H {film.data[0].runtime % 60}M</h4>
       </div>
       <div class="flex flex-col gap-4">
-        <p class:list={["md:mt-4", highlightText]}>{film.tagline.toUpperCase()}</p>
-        <p>{film.summary}</p>
-        <h4 class="text-2xl mt-20">{film.caption}</h4>
+        <p class="highlightText md:mt-4">{film.data[0].tagline.toUpperCase()}</p>
+        <p>{film.data[0].summary}</p>
+        <h4 class="text-2xl font-rufina mt-20">{film.data[0].caption}</h4>
       </div>
     </section>
 
@@ -56,10 +58,10 @@ for (let i = 0; i < Object.keys(film.castlist).length; i+= chunkSize) {
                     lg:grid lg:grid-cols-12 lg:gap-6">
       <div class="col-span-5 flex flex-col gap-6">
         <div class="aspect-[1280/706]">
-          <img src={film.stillpaths[0]} class="w-full object-contain" />
+          <Image src={images[film.data[0].stillpaths[0]]()} alt="film-still-1" class="w-full object-contain" />
         </div>
         <div class="lg:w-4/5">
-          <p>{film.analysis}</p>
+          <p>{film.data[0].analysis}</p>
         </div>
       </div>
 
@@ -67,13 +69,13 @@ for (let i = 0; i < Object.keys(film.castlist).length; i+= chunkSize) {
                   lg:flex flex-col justify-between">
         <div class="flex flex-col gap-6">
           <div class="flex flex-grow aspect-[1280/706]">
-            <img src={film.stillpaths[1]} class="w-full object-contain" />
+            <Image src={images[film.data[0].stillpaths[1]]()} alt="film-still-2" class="w-full object-contain" />
           </div>
-          <p class="italic">{film.quote}</p>
+          <p class="italic">{film.data[0].quote}</p>
         </div>
         <div class="mt-48 flex justify-end">
           <div class="w-2/3 aspect-[1280/706]">
-            <img src={film.stillpaths[2]} class="w-full object-contain" />
+            <Image src={images[film.data[0].stillpaths[2]]()} alt="film-still-3" class="w-full object-contain" />
           </div>
         </div>
       </div>
@@ -91,7 +93,7 @@ for (let i = 0; i < Object.keys(film.castlist).length; i+= chunkSize) {
                   {castPortion.map(([actor, character]) => (
                     <div class="col-span-1 flex flex-col gap-2">
                       <p>{actor}</p>
-                      <p class={highlightText}>{character}</p>
+                      <p class="highlightText">{character}</p>
                     </div>
                   ))}
                 </div>
@@ -104,7 +106,7 @@ for (let i = 0; i < Object.keys(film.castlist).length; i+= chunkSize) {
                   {directorPortion.map(director => (
                     <div class="col-span-1 flex flex-col gap-2">
                       <p>{director}</p>
-                      <p class={highlightText}>Director</p>
+                      <p class="highlightText">Director</p>
                     </div>
                   ))}
                 </div>
@@ -114,22 +116,31 @@ for (let i = 0; i < Object.keys(film.castlist).length; i+= chunkSize) {
         </div>
       </div>
       <div class="mt-8 flex justify-between font-bold">
-        <p>{film.title}</p>
-        <p>{film.year}</p>
+        <p>{film.data[0].title}</p>
+        <p>{film.data[0].year}</p>
       </div>
     </section>
 
     <section class="snap-end flex text-white">
         <div class="hidden bg-black lg:block w-1/3 px-8 pt-8 pb-16 xl:px-16 xl:pt-16 xl:pb-24">
-          <img src={film.posterpath} />
+          <Image src={images[film.data[0].posterpath]()} alt="film-poster" />
         </div>
-        <div class:list={[highlightBg, "w-full px-10 pt-8 pb-16 flex flex-col gap-8 justify-between"]}>
-          <h2 class="hidden lg:block font-normal">{film.title.toUpperCase()}</h2>
+        <div class="highlightBg w-full px-10 pt-8 pb-16 flex flex-col gap-8 justify-between">
+          <h2 class="hidden lg:block font-normal">{film.data[0].title.toUpperCase()}</h2>
           <div class="flex flex-col">
-            <h3 class="mb-8">{film.ratingstars}</h3>
-            <Button href=`https://letterboxd.com/film/${film.slug}` size="lg" color="white" hoverColor={film.color}>READ REVIEWS ON LETTERBOXD</Button>
+            <h3 class="mb-8">{film.data[0].ratingstars}</h3>
+            <Button href=`https://letterboxd.com/film/${film.data[0].slug}` size="lg" color="white" hoverColor={film.data[0].color}>READ REVIEWS ON LETTERBOXD</Button>
           </div>
         </div>
     </section>
   </main>
 </Layout>
+
+<style define:vars={{ color }}>
+  .highlightText {
+    color: var(--color);
+  }
+  .highlightBg {
+    background-color: var(--color);
+  }
+</style>

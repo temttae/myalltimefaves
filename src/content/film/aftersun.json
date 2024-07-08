@@ -1,0 +1,32 @@
+[
+  {
+      "slug":"aftersun",
+      "title":"Aftersun",
+      "year":2022,
+      "directorlist":[
+          "Charlotte Wells"
+      ],
+      "runtime":101,
+      "genrelist":[
+          "Drama"
+      ],
+      "castlist":{
+          "Paul Mescal":"Calum",
+          "Frankie Corio":"Sophie"
+      },
+      "tagline":"Memory burns.",
+      "summary":"Sophie reflects on the shared joy and private melancholy of a holiday she took with her father twenty years earlier. Memories real and imagined fill the gaps between miniDV footage as she tries to reconcile the father she knew with the man she didn\u2019t.",
+      "ratingstars":"\u2605\u2605\u2605\u2605",
+      "rating":4,
+      "posterpath":"\/src\/assets\/posters\/aftersun2022.jpg",
+      "stillpaths":[
+          "\/src\/assets\/stills\/aftersun01.jpg",
+          "\/src\/assets\/stills\/aftersun02.jpg",
+          "\/src\/assets\/stills\/aftersun03.jpg"
+      ],
+      "caption":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "analysis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus mauris ultrices eros in cursus turpis massa. In nulla posuere sollicitudin aliquam ultrices. Faucibus purus in massa tempor. Id leo in vitae turpis massa sed. Posuere lorem ipsum dolor sit. Neque gravida in fermentum et sollicitudin ac orci. Ut eu sem integer vitae justo. Ligula ullamcorper malesuada proin libero nunc consequat interdum. Amet massa vitae tortor condimentum. Erat nam at lectus urna. Blandit libero volutpat sed cras ornare. Adipiscing elit ut aliquam purus sit. Sit amet tellus cras adipiscing enim.",
+      "quote":"When you were 11, what did you think you would be doing now?",
+      "color":"#5B7B9E"
+  }
+]
