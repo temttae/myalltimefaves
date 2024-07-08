@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FilmDisplay from '../components/FilmDisplay.astro';
+import FilmDisplay from '../components/FilmDisplay';
 
 const username = import.meta.env.USERNAME;
 ---
@@ -17,6 +17,6 @@ const username = import.meta.env.USERNAME;
   </header>
 
   <main class="mt-8 px-10">
-    <FilmDisplay />
+    <FilmDisplay client:load />
   </main>
 </Layout>
