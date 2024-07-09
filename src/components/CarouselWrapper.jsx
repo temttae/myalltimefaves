@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
 const Carousel = (props) => {
-  const { children, show } = props;
+  const { children, show, screenWidth } = props;
+
+  const translateXVal = (((screenWidth-80) - 24*(show-1)) / show) + 24;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
@@ -21,41 +23,16 @@ const Carousel = (props) => {
     }
   }
 
-  const renderExtraPrev = () => {
-    let output = []
-    for (let index = 0; index < show; index++) {
-        output.push(children[length - 1 - index]);
-    }
-    output.reverse();
-    return output;
-  }
-  const renderExtraNext = () => {
-    let output = []
-    for (let index = 0; index < show; index++) {
-        output.push(children[index]);
-    }
-    return output;
-  }
-
   return (
     <div className="carousel-container">
+      {/* <p>{currentIndex}</p> */}
       <div className="carousel-wrapper">
         <div className="carousel-content-wrapper">
           <div
             className={`carousel-content show-${show}`}
-            style={{
-                transform: `translateX(-${currentIndex * (100 / show)}%)`,
-            }}
+            style={{ transform: `translateX(-${currentIndex * translateXVal}px)` }}
           >
-            {
-              (length > show) &&
-              renderExtraPrev()
-            }
             {children}
-            {
-              (length > show) &&
-              renderExtraNext()
-            }
           </div>
         </div>
       </div>
@@ -109,7 +86,7 @@ export const CarouselWrapper = (props) => {
   }, [width, films.length]);
 
   return (
-    <Carousel show={perView}>
+    <Carousel show={perView} screenWidth={width}>
       {films.map(film => {
         return (
           <a href={`/film/${film.data[0].slug}`} key={film.id}>
