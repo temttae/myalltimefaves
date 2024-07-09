@@ -1,25 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FilmDisplay from '../components/FilmDisplay';
-import Carousel from '../components/Carousel.astro';
 
 const username = import.meta.env.USERNAME;
 ---
 
 <Layout title="👀: myalltimefaves" bg="bg-black">
-  <header class="px-10 py-6 flex items-end text-white">
+  <header class="px-10 py-6 text-white items-center sm:flex">
     <div class="flex-none md:flex-1" />
-    <div>
+    <div class="text-center">
       <h4 class="font-bold">myalltimefaves</h4>
     </div>
-    <div class="flex-1 text-right">
+    <div class="flex-1 text-center sm:text-right">
       <p>find me @ <a href=`https://letterboxd.com/${username}` class="underline">letterboxd</a></p>
     </div>
   </header>
 
   <main class="mt-8 px-10">
-    <FilmDisplay client:load>
-      <Carousel slot="carousel" />
-    </FilmDisplay>
+    <FilmDisplay client:load />
   </main>
 </Layout>

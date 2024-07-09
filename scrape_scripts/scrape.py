@@ -107,8 +107,7 @@ def scrape_film(link):
 
 # scrape data from films
 links = [
-  'good-will-hunting',
-  'aftersun'
+  
 ]
 
 # one json file per film

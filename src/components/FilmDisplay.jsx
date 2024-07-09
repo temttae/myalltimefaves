@@ -1,7 +1,8 @@
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCollection } from "astro:content";
 
 import aftersun from '../assets/posters/aftersun2022.jpg';
+import diehard from '../assets/posters/diehard1988.jpg';
 import goodwillhunting from '../assets/posters/goodwillhunting1997.jpg';
 
 const FilterTabs = (props) => {
@@ -28,46 +29,69 @@ const FilterTabs = (props) => {
   )
 }
 
-const FilmGallery = (props) => {
-  const { films } = props;
+const FilmCarousel = (props) => {
+  const { films, posters } = props;
 
-  const images = {
-    'aftersun': aftersun,
-    'good-will-hunting': goodwillhunting,
-  }
+  if (films.length == 0) return;
 
   return (
-    <>
-      {films.length == 0 ? (
-        <p className="text-center italic">No films from this decade yet!</p>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {films.map(film => {
-            return (
-              <a href={`/film/${film.data[0].slug}`} key={film.id}>
-                <div className="text-center">
-                  <div className="mb-4">
-                    <img src={images[film.data[0].slug].src} className="w-full h-auto object-contain block" />
-                  </div>
-                  <a>{film.data[0].title} ({film.data[0].year})</a>
-                </div>
-              </a>
-            )
-          })}
-        </div>
-      )}
-    </>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      {films.map(film => {
+        return (
+          <a href={`/film/${film.data[0].slug}`} key={film.id}>
+            <div className="text-center">
+              <div className="mb-4">
+                <img src={posters[film.data[0].slug].src} className="w-full h-auto object-contain block" />
+              </div>
+              <a>{film.data[0].title} ({film.data[0].year})</a>
+            </div>
+          </a>
+        )
+      })}
+    </div>
+  )
+}
+
+const FilmGallery = (props) => {
+  const { films, posters } = props;
+
+  if (films.length == 0)
+    return (
+      <p className="text-center italic">No films from this decade yet!</p>
+    )
+
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      {films.map(film => {
+        return (
+          <a href={`/film/${film.data[0].slug}`} key={film.id}>
+            <div className="text-center">
+              <div className="mb-4">
+                <img src={posters[film.data[0].slug].src} className="w-full h-auto object-contain block" />
+              </div>
+              <a>{film.data[0].title} ({film.data[0].year})</a>
+            </div>
+          </a>
+        )
+      })}
+    </div>
   )
 }
 
 export default function FilmDisplay(props) {
+  const posters = {
+    'aftersun': aftersun,
+    'die-hard': diehard,
+    'good-will-hunting': goodwillhunting,
+  }
+
   const [activeTab, setActiveTab] = useState('All');
   const [films, setFilms] = useState([]);
 
   const filterFilms = async (tab) => {
     var filmCollection;
     if (tab == 'All') {
-      filmCollection = [];
+      filmCollection = await getCollection('film');
     } else {
       const minYear = parseInt(tab.substring(0, 4));
       const maxYear = minYear + 10;
@@ -87,9 +111,9 @@ export default function FilmDisplay(props) {
     <div className="text-white">
       <FilterTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab == 'All' ? (
-        <>{props.carousel}</>
+        <FilmCarousel films={films} posters={posters} />
       ) : (
-        <FilmGallery films={films} />
+        <FilmGallery films={films} posters={posters} />
       )}
     </div>
   )

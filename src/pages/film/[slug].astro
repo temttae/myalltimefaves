@@ -57,9 +57,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*/*.{jp
     <section class="snap-always snap-start px-10 mb-28
                     lg:grid lg:grid-cols-12 lg:gap-6">
       <div class="col-span-5 flex flex-col gap-6">
-        <div class="aspect-[1280/706]">
           <Image src={images[film.data[0].stillpaths[0]]()} alt="film-still-1" class="w-full object-contain" />
-        </div>
         <div class="lg:w-4/5">
           <p>{film.data[0].analysis}</p>
         </div>
@@ -68,13 +66,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*/*.{jp
       <div class="hidden col-start-7 col-span-6
                   lg:flex flex-col justify-between">
         <div class="flex flex-col gap-6">
-          <div class="flex flex-grow aspect-[1280/706]">
             <Image src={images[film.data[0].stillpaths[1]]()} alt="film-still-2" class="w-full object-contain" />
-          </div>
           <p class="italic">{film.data[0].quote}</p>
         </div>
         <div class="mt-48 flex justify-end">
-          <div class="w-2/3 aspect-[1280/706]">
+          <div class="w-2/3">
             <Image src={images[film.data[0].stillpaths[2]]()} alt="film-still-3" class="w-full object-contain" />
           </div>
         </div>
