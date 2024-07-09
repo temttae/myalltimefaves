@@ -25,7 +25,6 @@ const Carousel = (props) => {
 
   return (
     <div className="carousel-container">
-      {/* <p>{currentIndex}</p> */}
       <div className="carousel-wrapper">
         <div className="carousel-content-wrapper">
           <div
